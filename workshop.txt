@@ -1,0 +1,10 @@
+version=1
+id=2705751144
+title=No Disassembling please!
+description=On some servers people keep disassembling whole cities, so loot respawn won't happen. In that case you can use this mod.
+description=
+description=[img]https://i.imgur.com/p7Fv1Z6.gif[/img]
+Workshop ID: 2705751144
+Mod ID: NoDisassemblingPlease
+tags=Build 41;Misc;Multiplayer
+visibility=public
