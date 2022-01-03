@@ -1,6 +1,6 @@
-local config = {}
+local NoPickingUpPlease = {}
 
-config.exceptions = {
+NoPickingUpPlease.exceptions = {
 	'barbecue',
 	'fireplace',
 	'freezer',
@@ -10,13 +10,13 @@ config.exceptions = {
 	'woodstove',
 }
 
-config.whitelist = {}
+NoPickingUpPlease.whitelist = {}
 
-for i, v in pairs(config.exceptions) do
-	config.whitelist[v] = true
+for i, v in pairs(NoPickingUpPlease.exceptions) do
+	NoPickingUpPlease.whitelist[v] = true
 end
 
-local ISMoveableCursor_isValid = ISMoveableCursor.isValid
+NoPickingUpPlease.ISMoveableCursor_isValid = ISMoveableCursor.isValid
 ISMoveableCursor.isValid = function(self, square)
 
 	local objects = square:getObjects()
@@ -28,11 +28,11 @@ ISMoveableCursor.isValid = function(self, square)
 
 		if props:Is(IsoFlagType.container) then
 			local containerType = object:getContainer():getType()
-			if not config.whitelist[containerType] then
+			if not NoPickingUpPlease.whitelist[containerType] then
 				return false
 			end
 		end
 	end
 
-	return ISMoveableCursor_isValid(self, square)
+	return NoPickingUpPlease.ISMoveableCursor_isValid(self, square)
 end
