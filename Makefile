@@ -14,7 +14,7 @@ build:
 	cp -r mod.info media *.png LICENSE README.md $(BUNDLEDIR)    &&  \
 	find $(BUNDLE) -type f -iname '*.utf8.txt' -exec rm -f {} \; &&  \
 	sed -i                                                           \
-		-e "s/^name=$(MODNAME).*$$/name=$(MODNAME) (v$(VERSION))/" \
+		-e "s/^name=$(MODNAME).*$$/name=$(MODNAME) (v$(VERSION))/"   \
 		$(BUNDLEDIR)/mod.info
 
 bundle: build
