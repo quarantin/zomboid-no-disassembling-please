@@ -1,7 +1,8 @@
 version=1
 id=2705751144
-title=No Disassembling please!
+title=No Disassembling Please!
 description=On some servers people keep disassembling whole cities, or picking-up containers so loot respawn won't happen. In that case you can use this mod.
+description=
 description=Picking-up containers is still allowed for the following objects:
 description=[list]
 description=[*]Barbecues
