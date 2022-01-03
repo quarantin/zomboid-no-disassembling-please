@@ -1,9 +1,23 @@
 version=1
 id=2705751144
 title=No Disassembling please!
-description=On some servers people keep disassembling whole cities, so loot respawn won't happen. In that case you can use this mod.
+description=On some servers people keep disassembling whole cities, or picking-up containers so loot respawn won't happen. In that case you can use this mod.
+description=Picking-up containers is still allowed for the following objects:
+description=[list]
+description=[*]Barbecues
+description=[*]Fireplaces
+description=[*]Freezers
+description=[*]Fridges
+description=[*]Microwaves
+description=[*]Stoves
+description=[*]Woodstoves
+description=[/list]
 description=
 description=[img]https://i.imgur.com/p7Fv1Z6.gif[/img]
+description=
+description=[h1]Version[/h1]
+description=Latest version:
+description=
 Workshop ID: 2705751144
 Mod ID: NoDisassemblingPlease
 tags=Build 41;Misc;Multiplayer
