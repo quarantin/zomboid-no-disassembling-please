@@ -1,38 +1,16 @@
-local NoPickingUpPlease = {}
+local NoDisassemblingPlease = require('NoDisassemblingPlease/NoDisassemblingPlease_Config')
 
-NoPickingUpPlease.exceptions = {
-	'barbecue',
-	'fireplace',
-	'freezer',
-	'fridge',
-	'microwave',
-	'stove',
-	'woodstove',
-}
-
-NoPickingUpPlease.whitelist = {}
-
-for i, v in pairs(NoPickingUpPlease.exceptions) do
-	NoPickingUpPlease.whitelist[v] = true
-end
-
-NoPickingUpPlease.ISMoveableCursor_isValid = ISMoveableCursor.isValid
+NoDisassemblingPlease.ISMoveableCursor_isValid = ISMoveableCursor.isValid
 ISMoveableCursor.isValid = function(self, square)
 
 	local objects = square:getObjects()
 	for i = 0, objects:size() - 1 do
 
-		local object = objects:get(i);
-		local sprite = object:getSprite()
-		local props = sprite:getProperties()
-
-		if props:Is(IsoFlagType.container) then
-			local containerType = object:getContainer():getType()
-			if not NoPickingUpPlease.whitelist[containerType] then
-				return false
-			end
+		local object = objects:get(i)
+		if not NoDisassemblingPlease.allowDisassembling(object) then
+			return false
 		end
 	end
 
-	return NoPickingUpPlease.ISMoveableCursor_isValid(self, square)
+	return NoDisassemblingPlease.ISMoveableCursor_isValid(self, square)
 end
