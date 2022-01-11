@@ -1,3 +1,3 @@
 ISWorldMenuElements.ContextDisassemble = function()
-	print("No disassembling allowed!")
+	-- No disassembling allowed!
 end
