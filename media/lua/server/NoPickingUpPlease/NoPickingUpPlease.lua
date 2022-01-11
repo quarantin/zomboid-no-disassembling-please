@@ -19,6 +19,11 @@ end
 NoPickingUpPlease.ISMoveableCursor_isValid = ISMoveableCursor.isValid
 ISMoveableCursor.isValid = function(self, square)
 
+	-- Also prevent disassembling from the pickup tool
+	if ISMoveableCursor.mode[self.player] == "scrap" then
+		return false
+	end
+
 	local objects = square:getObjects()
 	for i = 0, objects:size() - 1 do
 
