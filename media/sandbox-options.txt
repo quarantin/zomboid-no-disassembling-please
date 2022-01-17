@@ -1,0 +1,10 @@
+VERSION = 1,
+
+option NoDisassemblingPlease.AuthorizedAccessLevel
+{
+	type = enum,
+	numValues = 6,
+	default = 1,
+	page = Sledgehammer,
+	translation = NoDisassemblingPlease_AuthorizedAccessLevel,
+}

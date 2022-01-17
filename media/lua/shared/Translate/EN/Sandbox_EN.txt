@@ -1,0 +1,11 @@
+Sandbox_EN = {
+	Sandbox_Sledgehammer = "Sledgehammer Authorization",
+	Sandbox_NoDisassemblingPlease_AuthorizedAccessLevel = "Authorized Access Level",
+	Sandbox_NoDisassemblingPlease_AuthorizedAccessLevel_tooltip = "Allow specified access level to destroy items using a sledgehammer.",
+	Sandbox_NoDisassemblingPlease_AuthorizedAccessLevel_option1 = "Observer",
+	Sandbox_NoDisassemblingPlease_AuthorizedAccessLevel_option2 = "GM",
+	Sandbox_NoDisassemblingPlease_AuthorizedAccessLevel_option3 = "Overseer",
+	Sandbox_NoDisassemblingPlease_AuthorizedAccessLevel_option4 = "Moderator",
+	Sandbox_NoDisassemblingPlease_AuthorizedAccessLevel_option5 = "Admin",
+	Sandbox_NoDisassemblingPlease_AuthorizedAccessLevel_option6 = "Disabled",
+}
