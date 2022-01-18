@@ -14,33 +14,12 @@ local function isAllowed(player)
 	return levels[accessLevel] and levels[accessLevel] >= authorizedLevel
 end
 
-local function predicateNotBroken(item)
-    return not item:isBroken()
-end
+local ISWorldObjectContextMenu_onDestroy = ISWorldObjectContextMenu.onDestroy
+function ISWorldObjectContextMenu.onDestroy(worldobjects, player, sledgehammer)
 
-local function OnFillWorldObjectContextMenu(playerId, context, worldobjects, test)
-
-	if test and ISWorldObjectContextMenu.Test then return true end
-
-	-- We only want to add context menu for admins in case AllowDestructionBySledgehammer is false
-	if getServerOptions():getBoolean("AllowDestructionBySledgehammer") then
-		return
+	if isAllowed(player) then
+		return ISWorldObjectContextMenu_onDestroy(worldobjects, player, sledgehammer)
 	end
 
-	local player = getSpecificPlayer(playerId)
-	local playerInv = player:getInventory()
-
-    -- destroy item with sledgehammer
-    if not isClient() or isAllowed(player) then
-        local sledgehammer = playerInv:getFirstTypeEvalRecurse("Sledgehammer", predicateNotBroken)
-        if not sledgehammer then
-            sledgehammer = playerInv:getFirstTypeEvalRecurse("Sledgehammer2", predicateNotBroken)
-        end
-        if sledgehammer and not sledgehammer:isBroken() then
-            if test then return ISWorldObjectContextMenu.setTest() end
-            context:addOption(getText("ContextMenu_Destroy"), worldobjects, ISWorldObjectContextMenu.onDestroy, player, sledgehammer)
-        end
-    end
+	player:setHaloNote(getText("IGUI_NoDestroyingAllowed"))
 end
-
-Events.OnFillWorldObjectContextMenu.Add(OnFillWorldObjectContextMenu)
