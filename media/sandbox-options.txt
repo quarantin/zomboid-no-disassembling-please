@@ -1,10 +1,35 @@
 VERSION = 1,
 
-option NoDisassemblingPlease.AuthorizedAccessLevel
+option NoDisassemblingPlease.NoDisassembling = {
+
+	type = boolean,
+	default = true,
+	page = NoDisassemblingPlease,
+	translation = NoDisassemblingPlease_NoDisassembling,
+}
+
+option NoDisassemblingPlease.NoPickingUp
+{
+	type = boolean,
+	default = true,
+	page = NoDisassemblingPlease,
+	translation = NoDisassemblingPlease_NoPickingUp,
+}
+
+option NoDisassemblingPlease.AllowDestroySafehouse
 {
 	type = enum,
-	numValues = 6,
-	default = 1,
-	page = Sledgehammer,
-	translation = NoDisassemblingPlease_AuthorizedAccessLevel,
+	default = 3,
+	numValues = 4,
+	page = NoDisassemblingPlease,
+	translation = NoDisassemblingPlease_AllowDestroySafehouse,
+}
+
+option NoDisassemblingPlease.AllowDestroyEverywhere
+{
+	type = enum,
+	default = 2,
+	numValues = 7,
+	page = NoDisassemblingPlease,
+	translation = NoDisassemblingPlease_AllowDestroyEverywhere,
 }

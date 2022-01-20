@@ -1,23 +1,19 @@
-local levels = {}
+local NoDisassemblingPlease = require("NoDisassemblingPlease/NoDisassemblingPlease_Auth")
 
-levels.Observer  = 1
-levels.GM        = 2
-levels.Overseer  = 3
-levels.Moderator = 4
-levels.Admin     = 5
+local function allowDestroySafehouse(player, worldobjects)
 
-local function isAllowed(player)
+	for _, object in ipairs(worldobjects) do
 
-	local accessLevel = player:getAccessLevel()
-	local authorizedLevel = SandboxVars.NoDisassemblingPlease.AuthorizedAccessLevel
-
-	return levels[accessLevel] and levels[accessLevel] >= authorizedLevel
+		if NoDisassemblingPlease.allowDestroySafehouse(player, object:getSquare()) then
+			return true
+		end
+	end
 end
 
 local ISWorldObjectContextMenu_onDestroy = ISWorldObjectContextMenu.onDestroy
 function ISWorldObjectContextMenu.onDestroy(worldobjects, player, sledgehammer)
 
-	if isAllowed(player) then
+	if NoDisassemblingPlease.allowDestroyEverywhere(player) or allowDestroySafehouse(player, worldobjects) then
 		return ISWorldObjectContextMenu_onDestroy(worldobjects, player, sledgehammer)
 	end
 
