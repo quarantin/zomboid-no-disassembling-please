@@ -2,6 +2,8 @@ local NoPickingUpPlease = {}
 
 NoPickingUpPlease.exceptions = {
 	'barbecue',
+	'bin',
+	'cashregister',
 	'fireplace',
 	'freezer',
 	'fridge',
