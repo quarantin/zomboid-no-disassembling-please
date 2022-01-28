@@ -17,7 +17,7 @@ for i, v in pairs(NoPickingUpPlease.exceptions) do
 end
 
 NoPickingUpPlease.ISMoveableCursor_isValid = ISMoveableCursor.isValid
-ISMoveableCursor.isValid = function(self, square)
+function ISMoveableCursor:isValid(square)
 
 	if SandboxVars.NoDisassemblingPlease.NoDisassembling then
 
@@ -28,16 +28,15 @@ ISMoveableCursor.isValid = function(self, square)
 
 	if SandboxVars.NoDisassemblingPlease.NoPickingUp then
 
-		local objects = square:getObjects()
-		for i = 0, objects:size() - 1 do
-
-			local object = objects:get(i);
-			local sprite = object:getSprite()
-			local props = sprite:getProperties()
-
+		local objects = self.objectListCache or self:getObjectList()
+		local object = objects[self.objectIndex]
+		if object and object.object and object.object.getSprite then
+			object = object.object
+			local props = object:getSprite():getProperties()
 			if props:Is(IsoFlagType.container) then
 				local containerType = object:getContainer():getType()
-				if not NoPickingUpPlease.whitelist[containerType] then
+				if not NoPickingUpPlease.whitelist[containerType] and not props:Is(IsoFlagType.attachedSurface) then
+					NoPickingUpPlease.ISMoveableCursor_isValid(self, square)
 					return false
 				end
 			end
